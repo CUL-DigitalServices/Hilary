@@ -34,7 +34,7 @@ config.ui = {
 // Cassandra related config information.
 config.cassandra = {
     'hosts': ['127.0.0.1:9160'],
-    'keyspace': 'oae',
+    'keyspace': 'avocet',
     'user': '',
     'pass': '',
     'timeout': 3000,
