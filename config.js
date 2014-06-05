@@ -28,13 +28,13 @@ var config = module.exports.config = {};
  * @param  {String}    path            The path to the UI static assets
  */
 config.ui = {
-    'path': '../3akai-ux'
+    'path': '../avocet-ui'
 };
 
 // Cassandra related config information.
 config.cassandra = {
     'hosts': ['127.0.0.1:9160'],
-    'keyspace': 'oae',
+    'keyspace': 'avocet',
     'user': '',
     'pass': '',
     'timeout': 3000,
@@ -81,7 +81,7 @@ config.servers = {
 };
 
 var tmpDir = process.env.TMP || process.env.TMPDIR || process.env.TEMP || '/tmp' || process.cwd();
-tmpDir += '/oae';
+tmpDir += '/avocet';
 
 /**
  * `config.files`
@@ -169,7 +169,7 @@ config.search = {
         }
     ],
     'index': {
-        'name': 'oae',
+        'name': 'avocet',
         'settings': {
             'number_of_shards': 5,
             'number_of_replicas': 1,
@@ -401,4 +401,22 @@ config.etherpad = {
 */
 config.tincanapi = {
     'timeout': 4000
+};
+
+/**
+ * `config.symplectic`
+ *
+ * Configuration namespace for the symplectic integration.
+ *
+ * @param  {Boolean}    enabled                 Whether or not this app node will by performing symplectic updates
+ * @param  {Object}     intervals               Holds the interval lengths for when a full synchronization or an update will be performed
+ * @param  {Number}     intervals.incremental   The interval (in hours) between incremental updates
+ * @param  {Number}     intervals.full          The interval (in the incremental updates interval length) between full synchronizations. For example, with `incremental` set to 24 and `full` set to 7 the node will pull down incremental updates each day and do a full update on the seventh day
+ */
+config.symplectic = {
+    'enabled': true,
+    'intervals': {
+        'incremental': 24,
+        'full': 7
+    }
 };
